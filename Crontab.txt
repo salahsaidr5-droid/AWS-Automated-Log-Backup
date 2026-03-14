@@ -1,0 +1,1 @@
+0 20 * * * /home/ec2-user/test.log >> /home/ec2-user/backup_report.log 2>&1
