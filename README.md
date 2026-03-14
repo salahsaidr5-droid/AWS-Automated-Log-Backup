@@ -60,3 +60,13 @@ The infrastructure consists of:
 ---
 
 ## 📦 Project Structure
+.
+├── Network.tf           # VPC, Subnets, Gateways, and Route Tables
+├── Instances.tf         # EC2 Web and Backup server definitions
+├── S3.tf                # S3 Bucket and Versioning configuration
+├── IAM_Role.tf          # IAM Roles and Policies for secure S3 access
+├── Endpoint_GW.tf       # VPC S3 Gateway Endpoint configuration
+├── Provider.tf          # AWS Provider and Region settings
+├── Bash.sh              # Automation script for log collection and upload
+├── Crontab.txt          # Schedule configuration for the backup script
+└── LICENSE              # Project license
