@@ -25,7 +25,7 @@ The infrastructure consists of:
 - **S3 Gateway Endpoint**
   - Allows private network access to S3 without using the internet
 
-![AWS Architecture](architecture.png)
+![AWS Architecture](architecture.png.png)
 
 ---
 
