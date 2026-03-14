@@ -1,38 +1,33 @@
-Automated AWS Log Backup Infrastructure
-A production-ready AWS environment provisioned via Terraform to automate log collection and archival. This project demonstrates high-level cloud networking, security, and DevOps automation practices.
+# Automated AWS Log Backup Infrastructure
 
-🏗️ Architecture Overview
-The system is built on a two-tier network design to ensure maximum security:
+A production-ready AWS infrastructure provisioned via **Terraform** to automate log collection and archival. This project demonstrates cloud networking, security, and automation practices.
 
-Public Subnet: Hosts the Web Server with restricted SSH access (limited to specific IP).
+## 🏗️ Architecture Overview
 
-Private Subnet: Hosts the Backup Server, isolated from direct internet access.
+The system architecture consists of a two-tier network:
 
-Data Flow: The Backup Server fetches logs via SSH, compresses them, and syncs them to S3 using a private VPC Gateway Endpoint to keep traffic off the public internet.
+- **Public Subnet:** Hosts a Web Server with restricted SSH access.
+- **Private Subnet:** Hosts a Backup Server that securely fetches logs and uploads them to S3.
+- **Security:** Uses IAM Roles (no hardcoded keys), NAT Gateway for private egress, and S3 Gateway Endpoints for secure data transfer.
 
-🌟 Key Features
-Infrastructure as Code (IaC): Entire VPC stack, including Subnets, NAT Gateways, and Route Tables, managed via Terraform.
+![Architecture Diagram](architecture.png)
 
-Identity & Security: Leverages IAM Instance Profiles to grant EC2 instances secure access to S3 without using hardcoded credentials.
+## 🚀 Key Features
 
-Network Optimization: Uses an S3 VPC Endpoint to reduce data transfer costs and increase security.
+- **Infrastructure as Code (IaC):** Complete VPC setup using Terraform.
+- **High Security:** EC2 instances use IAM Instance Profiles with least-privilege S3 policies.
+- **Network Optimization:** Traffic to S3 stays within the AWS network via VPC Endpoints.
+- **Automated Pipeline:** Bash scripts triggered by Crontab for daily log rotation and S3 syncing.
+- **Data Durability:** S3 Bucket versioning enabled to prevent data loss.
 
-Automated Pipeline: Custom Bash scripts triggered by Crontab for automated daily compression, rotation, and cloud synchronization.
+## 🛠️ Tech Stack
 
-Data Durability: S3 Versioning is enabled to protect against accidental deletions and ensure recovery.
+- **Cloud:** AWS (VPC, EC2, S3, NAT Gateway, IAM)
+- **IaC:** Terraform
+- **Scripting:** Bash, Crontab
+- **OS:** Amazon Linux 2023
 
-🛠️ Tech Stack
-Cloud Platform: AWS (VPC, EC2, S3, NAT Gateway, IAM)
+## 📖 How to Deploy
 
-IaC Tool: Terraform
-
-OS & Scripting: Amazon Linux 2023, Bash, Cron Jobs
-
-🚀 How to Deploy
-Clone the repository.
-
-Initialize the environment: terraform init.
-
-Preview the infrastructure: terraform plan.
-
-Deploy to AWS: terraform apply.
+1. Clone the repository
+2. Initialize Terraform
